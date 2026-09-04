@@ -1,0 +1,1227 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>申歆淼 &amp; 阿姜｜08年</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root { --blue:#82a3d0; --black:#111; --white:#fff; --soft:#f6f8fb; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--black); background:var(--white); font-family:Arial,Helvetica,sans-serif; }
+    .page { width:min(100%,1440px, calc(100vh * 1.7778)); aspect-ratio:16 / 9; margin:0 auto; padding:0 6vw 42px; overflow:visible; }
+    .topline { display:flex; justify-content:flex-start; gap:32px; padding:24px 0 18px; border-bottom:1px solid var(--black); font:11px/1.2 "Courier New",monospace; letter-spacing:.13em; text-align:left; }
+    .topline span:last-child { color:var(--blue); }
+    header { padding:clamp(48px,6vw,88px) 0 42px; border-bottom:1px solid var(--black); text-align:left; }
+    h1 { margin:0; font-size:clamp(42px,7vw,88px); line-height:.95; letter-spacing:-.08em; font-weight:800; text-align:left; }
+    .intro { max-width:600px; margin:25px 0 0; font-size:clamp(15px,1.5vw,20px); line-height:1.75; letter-spacing:.02em; text-align:left; }
+    .chapters { padding-top:4px; text-align:left; }
+    .chapter { display:block; width:100%; padding:13px 0 15px; border:0; border-bottom:1px solid rgba(17,17,17,.25); background:transparent; color:inherit; text-align:left; cursor:pointer; }
+    .chapter-number { color:var(--black); font-size:16px; font-weight:700; letter-spacing:.05em; }
+    .chapter-name { margin:6px 0 0; color:var(--blue); font-size:clamp(22px,2.8vw,40px); line-height:1.05; font-weight:800; letter-spacing:-.06em; text-align:left; }
+    .chapter:hover { background:var(--soft); }
+    .chapter:hover .chapter-name { padding-left:12px; transition:padding .2s ease; }
+    .chapter-view { display:none; position:relative; padding:clamp(34px,5vw,72px) 0 64px; text-align:left; }
+    .chapter-view.is-open { display:block; }
+    .back-button { position:absolute; top:22px; right:0; border:0; padding:0; background:transparent; color:var(--black); font:11px/1.2 "Courier New",monospace; letter-spacing:.1em; text-transform:uppercase; cursor:pointer; }
+    .back-button:hover { color:var(--blue); }
+    .manifesto { max-width:760px; }
+    .manifesto-section { margin:0 0 34px; }
+    .manifesto-title { margin:0; color:var(--blue); font-size:clamp(18px,2vw,28px); line-height:1.15; font-weight:800; letter-spacing:.04em; }
+    .manifesto-rule { margin:7px 0 15px; font:16px/1 "Courier New",monospace; color:var(--black); }
+    .manifesto-copy { margin:0; color:var(--black); font-size:clamp(16px,1.65vw,23px); line-height:1.7; white-space:pre-line; }
+    .manifesto-copy.english { color:var(--blue); font-weight:800; letter-spacing:.05em; line-height:1.5; }
+    .manifesto-subtitle { margin:24px 0 8px; color:var(--blue); font-size:clamp(16px,1.6vw,21px); line-height:1.2; font-weight:800; letter-spacing:.04em; }
+    .manifesto-link { display:block; margin-top:8px; color:var(--black); font-size:.85em; text-decoration:underline; text-underline-offset:3px; }
+    .manifesto-link:hover { color:var(--blue); }
+    .manifesto-closing { margin-top:42px; }
+    .archive-wall { max-width:1100px; }
+    .archive-intro { display:flex; justify-content:space-between; align-items:end; gap:30px; margin-bottom:34px; }
+    .archive-intro .manifesto-copy { max-width:560px; }
+    .archive-count { flex:0 0 auto; color:var(--blue); font:11px/1.4 "Courier New",monospace; letter-spacing:.12em; text-align:right; }
+    .photo-grid { display:grid; grid-template-columns:repeat(12,1fr); grid-auto-rows:clamp(92px,10vw,140px); gap:14px; }
+    .photo-card { position:relative; min-height:0; overflow:hidden; background:#dfe6ef; border:1px solid var(--black); }
+    .photo-card:nth-child(1) { grid-column:span 7; grid-row:span 3; }
+    .photo-card:nth-child(2) { grid-column:span 5; grid-row:span 2; }
+    .photo-card:nth-child(3) { grid-column:span 5; grid-row:span 3; }
+    .photo-card:nth-child(4) { grid-column:span 4; grid-row:span 2; }
+    .photo-card:nth-child(5) { grid-column:span 3; grid-row:span 2; }
+    .photo-card:nth-child(6) { grid-column:span 7; grid-row:span 3; }
+    .photo-card:nth-child(7) { grid-column:span 5; grid-row:span 2; }
+    .photo-card:nth-child(8) { grid-column:span 4; grid-row:span 3; }
+    .photo-card:nth-child(9) { grid-column:span 3; grid-row:span 2; }
+    .photo-card:nth-child(10) { grid-column:span 5; grid-row:span 2; }
+    .photo-card img { display:block; width:100%; height:100%; object-fit:cover; filter:grayscale(100%); transition:transform .45s ease, filter .45s ease; }
+    .photo-card:hover img, .photo-card:focus-within img { transform:scale(1.06); filter:grayscale(0%); }
+    .photo-card::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.7)); pointer-events:none; }
+    .photo-meta { position:absolute; z-index:1; right:13px; bottom:11px; left:13px; display:flex; justify-content:space-between; align-items:end; gap:12px; color:var(--white); font:11px/1.35 "Courier New",monospace; letter-spacing:.06em; }
+    .photo-meta strong { color:var(--white); font-size:14px; letter-spacing:.02em; }
+    .photo-meta span { color:#bcd1ef; text-align:right; }
+    .photo-note { margin:24px 0 0; color:var(--blue); font:11px/1.5 "Courier New",monospace; letter-spacing:.06em; }
+    /* FIRST TIMES — dedicated 10-card layout (card 03 = wide 2-image Hainan card) */
+    .firsts-wall { margin-bottom:64px; }
+    .firsts .photo-card:nth-child(1){grid-column:span 7;grid-row:span 3;}
+    .firsts .photo-card:nth-child(2){grid-column:span 5;grid-row:span 3;}
+    .firsts .photo-card:nth-child(3){grid-column:span 12;grid-row:span 3;} /* Hainan duo */
+    .firsts .photo-card:nth-child(4){grid-column:span 4;grid-row:span 3;}
+    .firsts .photo-card:nth-child(5){grid-column:span 4;grid-row:span 3;}
+    .firsts .photo-card:nth-child(6){grid-column:span 4;grid-row:span 3;}
+    .firsts .photo-card:nth-child(7){grid-column:span 6;grid-row:span 3;}
+    .firsts .photo-card:nth-child(8){grid-column:span 6;grid-row:span 3;}
+    .firsts .photo-card:nth-child(9){grid-column:span 6;grid-row:span 3;}
+    .firsts .photo-card:nth-child(10){grid-column:span 6;grid-row:span 3;}
+    .photo-card.photo-duo .duo{display:flex;width:100%;height:100%;}
+    .photo-card.photo-duo .duo img{width:50%;height:100%;object-fit:cover;filter:grayscale(100%);transition:transform .45s ease,filter .45s ease;}
+    .photo-card.photo-duo .duo img+img{border-left:2px solid rgba(255,255,255,.22);}
+    .photo-card.photo-duo:hover .duo img{transform:scale(1.04);filter:grayscale(0%);}
+    .campus-wall { margin-bottom:64px; }
+    .campus .photo-card:nth-child(1){grid-column:span 7;grid-row:span 3;}
+    .campus .photo-card:nth-child(2){grid-column:span 5;grid-row:span 3;}
+    .campus .photo-card:nth-child(3){grid-column:span 5;grid-row:span 3;}
+    .campus .photo-card:nth-child(4){grid-column:span 7;grid-row:span 3;}
+    .travel-wall { margin-bottom:64px; }
+    .travel .photo-card:nth-child(1){grid-column:span 7;grid-row:span 3;}
+    .travel .photo-card:nth-child(2){grid-column:span 5;grid-row:span 2;}
+    .travel .photo-card:nth-child(3){grid-column:span 5;grid-row:span 3;}
+    .travel .photo-card:nth-child(4){grid-column:span 4;grid-row:span 2;}
+    .travel .photo-card:nth-child(5){grid-column:span 3;grid-row:span 2;}
+    .travel .photo-card:nth-child(6){grid-column:span 7;grid-row:span 3;}
+    .travel .photo-card:nth-child(7){grid-column:span 5;grid-row:span 2;}
+    .travel .photo-card:nth-child(8){grid-column:span 4;grid-row:span 3;}
+    .travel .photo-card:nth-child(9){grid-column:span 3;grid-row:span 2;}
+    .travel .photo-card:nth-child(10){grid-column:span 5;grid-row:span 2;}
+    .travel .photo-card:nth-child(11){grid-column:span 7;grid-row:span 3;}
+    .travel .photo-card:nth-child(12){grid-column:span 5;grid-row:span 3;}
+    .travel .photo-card:nth-child(13){grid-column:span 4;grid-row:span 3;}
+    .travel .photo-card:nth-child(14){grid-column:span 4;grid-row:span 3;}
+    .travel .photo-card:nth-child(15){grid-column:span 4;grid-row:span 3;}
+    .daily-wall { margin-bottom:64px; }
+    .daily .photo-card:nth-child(1){grid-column:span 7;grid-row:span 3;}
+    .daily .photo-card:nth-child(2){grid-column:span 5;grid-row:span 2;}
+    .daily .photo-card:nth-child(3){grid-column:span 5;grid-row:span 3;}
+    .daily .photo-card:nth-child(4){grid-column:span 4;grid-row:span 2;}
+    .daily .photo-card:nth-child(5){grid-column:span 3;grid-row:span 2;}
+    .daily .photo-card:nth-child(6){grid-column:span 7;grid-row:span 3;}
+    .daily .photo-card:nth-child(7){grid-column:span 5;grid-row:span 2;}
+    .daily .photo-card:nth-child(8){grid-column:span 4;grid-row:span 3;}
+    .daily .photo-card:nth-child(9){grid-column:span 3;grid-row:span 2;}
+    .daily .photo-card:nth-child(10){grid-column:span 5;grid-row:span 2;}
+    .sports-wall { margin-bottom:64px; }
+    .sports .photo-card:nth-child(1){grid-column:span 7;grid-row:span 3;}
+    .sports .photo-card:nth-child(2){grid-column:span 5;grid-row:span 3;}
+    .sports .photo-card:nth-child(3){grid-column:span 5;grid-row:span 3;}
+    .sports .photo-card:nth-child(4){grid-column:span 7;grid-row:span 3;}
+    .sports .photo-card:nth-child(5){grid-column:span 12;grid-row:span 3;}
+    .cats-wall { margin-bottom:64px; }
+    .cats .photo-card:nth-child(1){grid-column:span 7;grid-row:span 3;}
+    .cats .photo-card:nth-child(2){grid-column:span 5;grid-row:span 3;}
+    .cats .photo-card:nth-child(3){grid-column:span 5;grid-row:span 3;}
+    .cats .photo-card:nth-child(4){grid-column:span 7;grid-row:span 3;}
+    .cats .photo-card:nth-child(5){grid-column:span 12;grid-row:span 3;}
+    .creative-wall { max-width:1100px; margin-bottom:64px; }
+    .creative-video-card { margin:0; border:1px solid var(--black); background:#111; }
+    .creative-video-card video { display:block; width:100%; height:auto; max-width:100%; }
+    .creative-video-card .photo-meta { position:relative; inset:auto; padding:12px 13px; background:#111; }
+    /* Uploaded photos: preserve the complete original frame and keep the wall clean. */
+    .archive-wall .photo-card img { object-fit:contain; object-position:center; background:#f4f5f7; }
+    .archive-wall .photo-card.photo-duo .duo img { object-fit:contain; }
+    .archive-wall .photo-card::after,
+    .archive-wall .photo-meta,
+    .archive-wall .photo-note,
+    .creative-video-card .photo-meta { display:none !important; }
+    .archive-wall .photo-card:hover img,
+    .archive-wall .photo-card:focus-within img,
+    .archive-wall .photo-card.photo-duo:hover .duo img { transform:none; }
+    /* Let uploaded images define their own height, so no empty frame surrounds them. */
+    .archive-wall .firsts,
+    .archive-wall .campus,
+    .archive-wall .travel,
+    .archive-wall .daily,
+    .archive-wall .sports,
+    .archive-wall .cats,
+    .archive-wall .reading,
+    .archive-wall .keep { grid-template-columns:repeat(3,minmax(0,1fr)); grid-auto-rows:auto; align-items:start; }
+    .archive-wall .firsts .photo-card,
+    .archive-wall .campus .photo-card,
+    .archive-wall .travel .photo-card,
+    .archive-wall .daily .photo-card,
+    .archive-wall .sports .photo-card,
+    .archive-wall .cats .photo-card,
+    .archive-wall .reading .photo-card,
+    .archive-wall .keep .photo-card { grid-column:span 1 !important; grid-row:auto !important; height:auto; min-height:0; background:transparent; }
+    .archive-wall .firsts .photo-card img,
+    .archive-wall .campus .photo-card img,
+    .archive-wall .travel .photo-card img,
+    .archive-wall .daily .photo-card img,
+    .archive-wall .sports .photo-card img,
+    .archive-wall .cats .photo-card img,
+    .archive-wall .reading .photo-card img,
+    .archive-wall .keep .photo-card img { width:100%; height:auto; aspect-ratio:auto; }
+    .archive-wall .photo-card.photo-duo .duo { height:auto; display:grid; grid-template-columns:1fr 1fr; }
+    .archive-wall .photo-card.photo-duo .duo img { width:100%; height:auto; }
+    .reading-wall { margin-bottom:64px; }
+    .reading .photo-card:nth-child(1){grid-column:span 7;grid-row:span 3;}
+    .reading .photo-card:nth-child(2){grid-column:span 5;grid-row:span 3;}
+    .keep-wall { margin-bottom:64px; }
+    .keep .photo-card:nth-child(1){grid-column:span 7;grid-row:span 2;}
+    .keep .photo-card:nth-child(2){grid-column:span 5;grid-row:span 2;}
+    .keep .photo-card:nth-child(3){grid-column:span 5;grid-row:span 2;}
+    .keep .photo-card:nth-child(4){grid-column:span 7;grid-row:span 2;}
+    .keep .photo-card:nth-child(5){grid-column:span 7;grid-row:span 2;}
+    .keep .photo-card:nth-child(6){grid-column:span 5;grid-row:span 2;}
+    .keep .photo-card:nth-child(7){grid-column:span 5;grid-row:span 2;}
+    .keep .photo-card:nth-child(8){grid-column:span 7;grid-row:span 2;}
+    .keep .photo-card:nth-child(9){grid-column:span 7;grid-row:span 2;}
+    .keep .photo-card:nth-child(10){grid-column:span 5;grid-row:span 2;}
+    .keep .photo-card:nth-child(11){grid-column:span 5;grid-row:span 2;}
+    .keep .photo-card:nth-child(12){grid-column:span 7;grid-row:span 2;}
+    .keep .photo-card { background:#f4f5f7; }
+    .keep .photo-card img { object-fit:contain; object-position:center; }
+    footer { display:flex; justify-content:flex-start; align-items:end; gap:32px; padding-top:15px; font:11px/1.5 "Courier New",monospace; letter-spacing:.1em; text-align:left; }
+    footer strong { color:var(--black); font-size:14px; }
+    @media (max-width:620px) {
+      .page { width:100%; aspect-ratio:auto; min-height:100vh; padding:0 7vw 64px; overflow:visible; }
+      .topline { font-size:9px; }
+      header { padding:80px 0 65px; }
+      .chapter { padding:25px 0 28px; }
+      .chapter-number { font-size:13px; }
+      .chapter:hover .chapter-name { padding-left:0; }
+      .chapter-view { padding-top:68px; }
+      .back-button { top:24px; }
+      .archive-intro { display:block; margin-bottom:26px; }
+      .archive-count { margin-top:20px; text-align:left; }
+      .photo-grid { grid-template-columns:repeat(2,1fr); grid-auto-rows:46vw; gap:9px; }
+      .photo-card:nth-child(n) { grid-column:span 1; grid-row:span 1; }
+      .photo-card:nth-child(1), .photo-card:nth-child(6) { grid-column:span 2; }
+      .photo-meta { right:9px; bottom:8px; left:9px; display:block; }
+      .photo-meta strong { display:block; font-size:11px; }
+      .photo-meta span { display:block; margin-top:3px; text-align:left; font-size:9px; }
+      footer { display:block; }
+      footer strong { display:block; margin-top:12px; }
+      .firsts .photo-card:nth-child(n){grid-column:span 1;grid-row:span 1;}
+      .firsts .photo-card:nth-child(1),.firsts .photo-card:nth-child(3){grid-column:span 2;}
+      .campus .photo-card:nth-child(n){grid-column:span 1;grid-row:span 1;}
+      .campus .photo-card:nth-child(1),.campus .photo-card:nth-child(4){grid-column:span 2;}
+      .travel .photo-card:nth-child(n){grid-column:span 1;grid-row:span 1;}
+      .travel .photo-card:nth-child(1),.travel .photo-card:nth-child(6),.travel .photo-card:nth-child(11){grid-column:span 2;}
+      .daily .photo-card:nth-child(n){grid-column:span 1;grid-row:span 1;}
+      .daily .photo-card:nth-child(1),.daily .photo-card:nth-child(6){grid-column:span 2;}
+      .sports .photo-card:nth-child(n){grid-column:span 1;grid-row:span 1;}
+      .sports .photo-card:nth-child(1),.sports .photo-card:nth-child(4),.sports .photo-card:nth-child(5){grid-column:span 2;}
+      .cats .photo-card:nth-child(n){grid-column:span 1;grid-row:span 1;}
+      .cats .photo-card:nth-child(1),.cats .photo-card:nth-child(4),.cats .photo-card:nth-child(5){grid-column:span 2;}
+      .reading .photo-card:nth-child(n){grid-column:span 1;grid-row:span 1;}
+      .reading .photo-card:nth-child(1),.reading .photo-card:nth-child(2){grid-column:span 2;}
+      .keep .photo-card:nth-child(n){grid-column:span 1;grid-row:span 1;}
+      .keep .photo-card:nth-child(1),.keep .photo-card:nth-child(4),.keep .photo-card:nth-child(8),.keep .photo-card:nth-child(12){grid-column:span 2;}
+      .archive-wall .firsts,
+      .archive-wall .campus,
+      .archive-wall .travel,
+      .archive-wall .daily,
+      .archive-wall .sports,
+      .archive-wall .cats,
+      .archive-wall .reading,
+      .archive-wall .keep { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .photo-card.photo-duo .duo img{width:50%;}
+    }
+
+    /* ===== Opening hero — page 1 ===== */
+    .hero{
+      position:relative;
+      width:100%;
+      min-height:100vh;
+      min-height:100svh;
+      display:grid;
+      place-items:center;
+      background:#0a0604;
+      overflow:hidden;
+    }
+    .hero .stage{
+      position:relative;
+      aspect-ratio:2880 / 1280;            /* exact video aspect */
+      width:min(100%, calc(100vh * 2.25)); /* fill viewport, keep ratio */
+      container-type:inline-size;          /* enables cqi for the overlay */
+      overflow:hidden;
+      background:#000;
+      box-shadow:
+        0 40px 100px -20px rgba(0,0,0,.6),
+        0 0 0 1px rgba(255,255,255,.04);
+    }
+    .hero .stage video{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit:cover; display:block;
+    }
+    /* Text overlay — sits entirely inside the diagonal brown panel (bottom-left).
+       Container query units keep the type scaled to the video, never overflowing. */
+    .hero .overlay{
+      position:absolute;
+      left:2.5%; right:42%;                /* spans to ~58% from the left */
+      bottom:6%;
+      color:#f3ead9;
+      font-family:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+      font-weight:500;
+      font-size:clamp(12px, 1.05cqi, 30px);
+      line-height:1.5;
+      letter-spacing:.015em;
+      text-shadow:0 1px 0 rgba(0,0,0,.25), 0 3px 10px rgba(0,0,0,.5);
+      pointer-events:none;
+    }
+    .hero .overlay p{ margin:0; opacity:0; transform:translateY(10px); }
+    .hero .overlay p + p{ margin-top:.08em; }
+    .hero.is-done .overlay p{ animation:heroFadeUp .5s ease-out forwards; }
+    @keyframes heroFadeUp{
+      from{ opacity:0; transform:translateY(8px); }
+      to  { opacity:1; transform:translateY(0); }
+    }
+
+    /* Enter cue appears with the text; scrolls down to the archive */
+    .hero .enter-cue{
+      position:absolute;
+      left:0; right:0; bottom:26px;
+      display:flex; flex-direction:column; align-items:center; gap:9px;
+      color:#f3ead9;
+      font:11px/1.2 "Courier New",monospace;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      background:transparent; border:0;
+      opacity:0; transform:translateY(8px);
+      cursor:pointer;
+      transition:opacity .6s ease, transform .6s ease;
+      z-index:2;
+    }
+    .hero.is-done .enter-cue{ opacity:.85; transform:translateY(0); }
+    .hero .enter-cue:hover{ opacity:1; }
+    .hero .enter-cue .arrow{ font-size:18px; animation:heroBob 1.8s ease-in-out infinite; }
+    @keyframes heroBob{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(6px);} }
+
+    @media (prefers-reduced-motion: reduce){
+      .hero .overlay p{ animation:none; }
+      .hero.is-done .overlay p{ opacity:1; transform:none; }
+      .hero .enter-cue .arrow{ animation:none; }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero" aria-label="Opening">
+    <div class="stage">
+      <video src="cover.mp4" autoplay muted playsinline preload="auto"></video>
+      <div class="overlay" role="note">
+        <p>This is where you will discover my personal charm.</p>
+        <p>I will continuously refine my resume, and deliver tangible value via project creation and user interaction.</p>
+        <p>From now on, I will stop waiting and strive to be seen by a broader audience.</p>
+      </div>
+    </div>
+    <button class="enter-cue" type="button" aria-label="Enter the archive">Enter<span class="arrow">&#8595;</span></button>
+  </section>
+  <div class="page" id="manifesto">
+    <div class="topline"><span>SXM / AJANG</span><span>PERSONAL ARCHIVE · 2026</span></div>
+    <header>
+      <h1><strong>申歆淼&amp;阿姜&nbsp; 08年</strong></h1>
+      <p class="intro">SXM于2026.8.10创造了第一个个人IP：阿姜—成长迭代</p>
+    </header>
+    <main class="chapters" aria-label="个人档案章节" id="directory">
+      <button class="chapter" type="button" id="chapter-one-trigger" aria-controls="chapter-one" aria-expanded="false"><div class="chapter-number">第一章</div><h2 class="chapter-name">WHO AM I</h2></button>
+      <button class="chapter" type="button" id="chapter-two-trigger" aria-controls="chapter-two" aria-expanded="false"><div class="chapter-number">第二章</div><h2 class="chapter-name">MY DIRECTION</h2></button>
+      <button class="chapter" type="button" id="chapter-three-trigger" aria-controls="chapter-three" aria-expanded="false"><div class="chapter-number">第三章</div><h2 class="chapter-name">WHAT I DO</h2></button>
+      <button class="chapter" type="button" id="chapter-four-trigger" aria-controls="chapter-four" aria-expanded="false"><div class="chapter-number">第四章</div><h2 class="chapter-name">MY SYSTEM</h2></button>
+      <button class="chapter" type="button" id="chapter-five-trigger" aria-controls="chapter-five" aria-expanded="false"><div class="chapter-number">第五章</div><h2 class="chapter-name">MY LIFE</h2></button>
+      <section class="chapter"><div class="chapter-number">第六章</div><h2 class="chapter-name">MY THOUGHTS</h2></section>
+      <button class="chapter" type="button" id="chapter-seven-trigger" aria-controls="chapter-seven" aria-expanded="false"><div class="chapter-number">第七章</div><h2 class="chapter-name">WHY I CARE</h2></button>
+      <button class="chapter" type="button" id="chapter-eight-trigger" aria-controls="chapter-eight" aria-expanded="false"><div class="chapter-number">第八章</div><h2 class="chapter-name">QUESTIONS TO FUTURE ME</h2></button>
+      <button class="chapter" type="button" id="chapter-nine-trigger" aria-controls="chapter-nine" aria-expanded="false"><div class="chapter-number">第九章</div><h2 class="chapter-name">ARCHIVE</h2></button>
+    </main>
+    <section class="chapter-view" id="chapter-one" aria-label="第一章 WHO I AM" aria-hidden="true">
+      <button class="back-button" type="button" id="back-to-directory">← BACK TO DIRECTORY</button>
+      <div class="manifesto">
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">WHO I AM</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy english">I TURN IDEAS INTO ACTION.</p>
+          <p class="manifesto-copy">我喜欢将想法变成行动。
+坚定自己的选择，并大胆走下去。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">MY WAY</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy english">CHOOSE.
+ACT.
+KEEP GOING.</p>
+          <p class="manifesto-copy">我相信：
+先选择，再行动。
+在行动中寻找答案。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">NO REGRETS.</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">只从过去吸取价值，
+不评判过去的自己。
+尊重过去，
+面向未来。
+所有发生的事，
+皆有利于我。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">MY BOUNDARIES</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">我不愿意合群。
+合作建立在基本的认识与尊重上。
+如果违背，
+我会离开。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">STILL WORKING ON</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">宠辱不惊。
+面对面试、评价、未知的结果，
+我仍然会紧张。
+但我正在学习：
+不因为紧张，
+就怀疑自己。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">CURRENTLY</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy english">BOLD
+BRAVE
+DECISIVE
+EXPRESSIVE
+EXECUTIVE</p>
+        </section>
+        <section class="manifesto-section manifesto-closing">
+          <h2 class="manifesto-title">BECOMING</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">有初心。
+愿意执行。
+完成理想。
+成为一个有影响力，
+并能给社会带来价值的人。</p>
+        </section>
+      </div>
+    </section>
+    <section class="chapter-view" id="chapter-two" aria-label="第二章 MY DIRECTION" aria-hidden="true">
+      <button class="back-button" type="button" id="back-to-directory-two">← BACK TO DIRECTORY</button>
+      <div class="manifesto">
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">NORTH STAR</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">我只活这一次。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">BECOMING</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">我想成为一个传播自我价值的人。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">SUCCESS</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">如果把钱、名气、学历、地位、社会认可全部拿掉，我觉得一个人的成功还剩下初心和勇气。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">INFLUENCE</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">我希望未来拥有影响力之后，让年轻人看到另一种人生可能，让每个女孩坚定自己的路。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">SELF-ITERATION</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">在做事的过程中发现问题，复盘、调整、尝试、再次验证，最终得出更高效的方案。
+
+我希望自己始终拥有不断迭代自己的能力。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">ENTREPRENEURSHIP</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">从需求出发，真正做出对一部分人有价值的产品。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">FORESIGHT</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">不被自己的专业限制。
+
+我对反差有一种极致的痴迷。
+
+希望传统行业能够被重新理解，甚至颠覆大众认知。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">WEALTH</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">利用好钱，不被钱利用。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">RESEARCH</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">本科专业是纺织工程。
+
+我希望成为一个尊重数据、保持耐心、敢于质疑的研究者。
+
+我不希望自己成为死板的研究者，也不希望为了适应腐朽的规则而放弃自己的判断。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">WHAT I PROTECT</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">健康。
+
+自由意志驱动行为发生。
+
+好奇心。
+
+主体性。
+
+真诚。
+
+自由安排的时间。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">VALUE</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">改变自己，改变世界。
+
+在能力范围内做志愿服务。
+
+未来，我希望能够在公益活动中实现最大的人生价值。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">IF I CHANGE</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">如果五年后的我完全改变了方向，我会看到她的成长轨迹，并建立起对她的认同。
+
+我不要求未来的自己永远走同一条路。
+
+我只希望，无论走向哪里，她都知道自己为什么出发。</p>
+        </section>
+        <section class="manifesto-section manifesto-closing">
+          <h2 class="manifesto-title">THE DIRECTION</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">我有自己的方向，但我不预设终点。
+
+我愿意探索未知，也允许未来改变答案。
+
+只要仍然遵从本心，我就仍然在向前。</p>
+        </section>
+      </div>
+    </section>
+    <section class="chapter-view" id="chapter-three" aria-label="第三章 WHAT I DO" aria-hidden="true">
+      <button class="back-button" type="button" id="back-to-directory-three">← BACK TO DIRECTORY</button>
+      <div class="manifesto">
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">CURRENTLY</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">现在，我正在投入：
+
+大学专业学习、英语、自媒体、阅读、运动。
+
+其中，我最想长期坚持的是阅读。
+
+因为阅读是一个人了解世界的第一大窗口。没有大量的输入，就很有可能在想要输出的时候哑口无言。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">READING</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">我希望保持长期阅读。
+
+对我而言，阅读不仅是获取知识，更是不断扩大自己认识世界的边界。
+
+输入决定了一个人能够看到多大的世界，也决定了她最终能够说出什么。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">ENGLISH</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">英语是我目前还没有真正开始行动的事情。
+
+不是因为不重要，而是因为畏难，也因为目前没有足够的精力去重新规划。
+
+但它仍然在我的长期计划里。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">RESEARCH</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">“为什么换药只能用纱布？
+
+为什么不能有一种材料，贴上伤口却不粘连？
+
+有一种织物能告诉我们，这个炎症是在加重还是在好转。
+
+有一种衣服，能让蝴蝶宝宝也敢被拥抱。
+
+这些问题不是留给医学的，而是留给纺织的。”
+
+——陈柳青老师
+
+这是我在接触纺织研究时，真正被触动的一次。
+
+原来纺织不只是我过去理解的纱线、织物和服装。
+
+它也可以进入医学、电子、生命与未来。
+
+我希望未来的自己，也能够找到属于这些问题的答案。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">SELF-MEDIA</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">对我而言，自媒体是：
+
+<strong>记录成长 + 影响年轻人。</strong>
+
+我希望一个人看完我的内容以后，能够变得更加自洽，也拥有一点勇气去尝试新的事物。
+
+如果未来真的拥有一百万粉丝，我最害怕的事情不是流量下降，而是：
+
+<strong>消费粉丝。</strong>
+
+我希望影响力建立在真实的价值之上，而不是建立在对关注者的消耗之上。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">AI</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">我正在尝试用 AI 建立属于自己的个人工作流。
+
+我不希望 AI 只停留在“学习工具”的层面，而是希望真正做出能够落实到现实生活中的项目。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">PROJECTS</h2><div class="manifesto-rule">────────────</div>
+          <h3 class="manifesto-subtitle">PERSONAL CARD</h3>
+          <p class="manifesto-copy">我用 AI / Coding 搭建了自己的个人名片。
+          <a class="manifesto-link" href="https://a-jiang.vercel.app/?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">a-jiang.vercel.app</a></p>
+          <h3 class="manifesto-subtitle">LPT ANONYMOUS WALL</h3>
+          <p class="manifesto-copy">搭建 LPT 匿名留言墙。
+          <a class="manifesto-link" href="https://lpt-wall-olive.vercel.app/?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">LPT Anonymous Wall</a></p>
+          <h3 class="manifesto-subtitle">DAILY TODO STICKER</h3>
+          <p class="manifesto-copy">搭建个人每日待办贴纸。
+          <a class="manifesto-link" href="https://todo-list-cyan-seven-10.vercel.app/?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">Daily Todo Sticker</a></p>
+          <h3 class="manifesto-subtitle">TEAM CHECK-IN</h3>
+          <p class="manifesto-copy">为团队搭建打卡记录网站。
+          <a class="manifesto-link" href="https://149247764b564c729c48faff6443d9f8.gz1.agentos-app.net/?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">Team Check-in Website</a></p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">BUILDING</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">我曾经真正完成过一次：
+
+<strong>发现需求 → 想办法解决 → 得到反馈 → 修改</strong>
+
+团队的打卡统计需要提效。
+
+于是，我 Coding 出了一个网站。
+
+成员使用之后反馈：
+
+<strong>手机版交互不够顺畅。</strong>
+
+于是，我进行了改动。
+
+这对我来说，是一次很小，但真实的产品闭环。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">PRODUCT</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">我认为，一个真正有价值的产品和一个看起来很厉害的产品，区别在于：
+
+<strong>有没有用户的正向反馈。</strong>
+
+真正有价值的产品，是创意与交互体验的结合。
+
+不是“看起来很厉害”，而是它真正解决了一部分人的问题。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">LEARNING</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">未来大学四年，我最想掌握五种能力：
+
+<strong>英语</strong>
+<strong>科研</strong>
+<strong>商业</strong>
+<strong>表达</strong>
+<strong>AI 半自动化</strong></p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">EXPRESSION</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">表达力可能不会直接给我钱。
+
+但我一定要拥有它。
+
+因为只有表达，才能让世界看到我。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">HOW I LEARN</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">我最讨厌两件事情：
+
+没有重点的课。
+
+机械记忆。
+
+我更希望学习是一种真正理解、实践和解决问题的过程，而不是为了完成任务而完成任务。</p>
+        </section>
+        <section class="manifesto-section manifesto-closing">
+          <h2 class="manifesto-title">BUILDING NEXT</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">我很想做、但还没有真正完成的事情：
+
+<strong>搭建属于自己的个人网站。</strong>
+
+现在，它正在进行中。
+
+它不会是一个一次性完成的作品。
+
+我希望持续维护、持续完善，让它随着我的成长不断迭代。
+
+它记录的不只是“我做过什么”，也记录：
+
+<strong>我正在成为谁。</strong></p>
+        </section>
+      </div>
+    </section>
+    <section class="chapter-view" id="chapter-four" aria-label="第四章 MY SYSTEM" aria-hidden="true">
+      <button class="back-button" type="button" id="back-to-directory-four">← BACK TO DIRECTORY</button>
+      <div class="manifesto">
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">01 / WHEN I GET LOST</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">当我迷茫时，我会和 ChatGPT 或特定的朋友聊天。
+
+先把问题解决，再解决情绪。
+
+我不要求自己在情绪混乱的时候立刻想明白人生。我更愿意先找到问题，再一点一点处理自己的情绪。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">02 / HOW I MAKE DECISIONS</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">判断一件事情要不要做，我会问自己：
+
+<strong>这是机会吗？</strong>
+<strong>它会让我获得什么能力？</strong>
+<strong>成本是什么？</strong>
+<strong>是否符合我的长期主线？</strong>
+<strong>适不适合现在的我？</strong>
+<strong>如果没有人知道这件事，我还会去做吗？</strong>
+
+我不想因为“看起来很重要”就去做一件事情。
+
+我更在意，它是否真的属于我的路。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">03 / HOW I FACE FAILURE</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">如果我阶段性失败了，我会：
+
+<strong>实事求是 → 复盘 → 自我价值认同 → 改变</strong>
+
+承认发生了什么。
+
+复盘自己哪里出了问题。
+
+但不因为一次失败，否定自己的价值。
+
+然后改变。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">04 / HOW I USE MY TIME</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">我的时间和精力是有限的。
+
+所以，我不做过于偏离主线的事情，去分走本来就有限的时间和精力。
+
+我希望自己把有限的资源，投入真正重要的事情上。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">05 / MY RULES</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy"><strong>不认同、不跟随、不创造腐朽的规则。</strong>
+
+不为了合群违背本心。
+
+不为了利益坑害人民。
+
+如果一个规则本身就是错的，我不希望自己只是因为“大家都这样”就选择服从。</p>
+        </section>
+        <section class="manifesto-section manifesto-closing">
+          <h2 class="manifesto-title">06 / WHAT I WANT TO KEEP</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">五年后、十年后，无论我变成什么样，
+
+我都不希望自己开始过度在意外界的评价。
+
+我也不希望自己丧失那颗：
+
+<strong>持续探索，长期学习的心。</strong>
+
+我可以改变方向。
+
+可以推翻过去的自己。
+
+可以成为完全不同的人。
+
+但我希望那个愿意探索世界、愿意学习、愿意重新开始的自己，一直都在。</p>
+        </section>
+      </div>
+    </section>
+    <section class="chapter-view" id="chapter-seven" aria-label="第七章 WHY I CARE" aria-hidden="true">
+      <button class="back-button" type="button" id="back-to-directory-seven">← BACK TO DIRECTORY</button>
+      <div class="manifesto">
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">01 / MY CAT</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">猫是我的挚爱。
+
+她无声的陪伴，胜过一切人类的承诺。
+
+她也是我一直想放进这个网站的存在。
+
+不是因为她代表什么宏大的意义，只是因为在很多时候，她安静地在那里，就已经足够了。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">02 / THE LITTLE THINGS</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">和朋友的一次畅谈、一个凉快的清晨、轻松地入睡、猫的咕噜声、运动时耳机里的音乐、一碗热腾腾的汤面、晒干的被单散发淡淡的香味……
+
+这些都让我觉得：
+
+<strong>我还活着。</strong>
+
+我想在平凡里感知幸福。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">03 / RIGHT NOW</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">最近的我，在忙碌的开学生活中努力保持自洽。
+
+也会在忙碌里偷一点时间，享受属于自己的自由时刻。
+
+我不希望生活只有“完成任务”。
+
+我希望自己始终知道，自己为什么而活。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">04 / WHAT I WANT TO GIVE</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">我最想做的事情之一，
+
+是把自己的成长之路写成一本书。
+
+把那些走过的弯路、做过的选择、得到的答案，以及还没有答案的问题，都记录下来。
+
+如果它有一天能够传递给更多人，让另一个正在寻找自己的人少一点迷茫，多一点勇气，
+
+那就很好。</p>
+        </section>
+        <section class="manifesto-section manifesto-closing">
+          <h2 class="manifesto-title">05 / THE PEOPLE I WANT TO MEET</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">我希望未来遇到更多多元发展的人。
+
+不一定拥有相同的经历，也不一定走相同的道路。
+
+但我们可以在某些地方同频，
+
+产生链接，
+
+产生合作，
+
+也彼此打开一些新的可能。</p>
+        </section>
+      </div>
+    </section>
+    <section class="chapter-view" id="chapter-five" aria-label="第五章 MY LIFE" aria-hidden="true">
+      <button class="back-button" type="button" id="back-to-directory-five">← BACK TO DIRECTORY</button>
+      <div class="manifesto">
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">01 / A DAY IN MY LIFE</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">我习惯早起。
+
+出去走走，然后吃一顿好早餐。
+
+我喜欢一天从比较清醒的状态开始，而不是被手机和匆忙推着往前走。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">02 / UNIVERSITY LIFE</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">我眼中的大学，不只是发展学术的平台，
+
+也是一个和多元年轻人接触的平台。
+
+我倾向于寻找并进入适合自己节奏、同时又与长期主线相关的团体。
+
+我不追求参加尽可能多的事情。
+
+我更希望找到真正适合自己的环境，以及真正值得建立连接的人。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">03 / MY PEOPLE</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">我喜欢和这样的人相处：
+
+有自己热爱的领域，
+想法丰富，
+有执行力，
+谦虚，
+积极投身于个人创业，
+表达力强。
+
+他们不一定和我走同一条路，
+
+但我希望我们都有在认真建设自己人生的能力。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">04 / MY BODY</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">我可以通过身体最真实的反馈，知道自己的需求。
+
+比如胃痛，有时候并不是身体本身出了问题，而是在提醒我：
+
+<strong>我可能焦虑了。</strong>
+
+我开始学习听懂身体的语言。
+
+对我来说，跑步是一辈子的事。
+
+睡眠比多做一件事更重要。
+
+未来，我希望自己做所有事情的基础，
+
+都是拥有一具强壮的身体。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">05 / FOR NO REASON</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">躺在草坪上看天空。
+
+随手拍照片。
+
+和朋友一起听歌。
+
+没有目的。
+
+也不需要产生什么结果。
+
+有些时间存在的意义，
+
+就是让我好好地活在当下。</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">06 / CURRENTLY</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy"><strong>待添加。</strong>
+
+这里会一直更新。
+
+最近喜欢的音乐、书、电影、食物、衣服、一个突然喜欢上的东西……
+
+生活还在发生。
+
+所以这一栏也不会有最终答案。</p>
+        </section>
+        <section class="manifesto-section manifesto-closing">
+          <h2 class="manifesto-title">07 / MOMENTS</h2><div class="manifesto-rule">────────────</div>
+          <h3 class="manifesto-subtitle">16 — 100+ DAYS</h3>
+          <p class="manifesto-copy">坚持复盘超过 100 天。</p>
+          <h3 class="manifesto-subtitle">17 — HAINAN</h3>
+          <p class="manifesto-copy">第一次从河北去海南参加冬令营。
+第一次真正走出熟悉的环境。</p>
+          <h3 class="manifesto-subtitle">18 — LPT</h3>
+          <p class="manifesto-copy">第一次参加 LPT 线下见面会。
+认识了后来影响我很久的人。</p>
+          <h3 class="manifesto-subtitle">FIRST EARNED MONEY</h3>
+          <p class="manifesto-copy">赚到自己的第一桶金。</p>
+          <h3 class="manifesto-subtitle">BECOMING A CREATOR</h3>
+          <p class="manifesto-copy">成为自媒体创作者。
+开始记录自己的成长，也开始尝试影响更多人。</p>
+          <h3 class="manifesto-subtitle">FIRST FULL-STACK PROJECT</h3>
+          <p class="manifesto-copy">第一次完成一个全栈项目。
+第一次把一个想法真正做成可以被使用的东西。</p>
+          <h3 class="manifesto-subtitle">2026 — UNIVERSITY</h3>
+          <p class="manifesto-copy">离开熟悉的环境，
+开始真正独立地生活。</p>
+        </section>
+      </div>
+    </section>
+    <section class="chapter-view" id="chapter-eight" aria-label="第八章 QUESTIONS TO FUTURE ME" aria-hidden="true">
+      <button class="back-button" type="button" id="back-to-directory-eight">← BACK TO DIRECTORY</button>
+      <div class="manifesto">
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">01 / ABOUT ME</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">• 五年后的我，你还喜欢现在的自己吗？
+• 你有没有变得更自由？
+• 你还会因为别人的评价改变自己的选择吗？
+• 你现在还敢不敢做“不被理解”的决定？
+• 你有没有变成自己曾经讨厌的那种人？</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">02 / ABOUT MY DREAMS</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">• 你真的走到了自己想去的地方吗？
+• 你有没有去过那些现在很想去的城市？
+• 你有没有做成一件曾经觉得“我真的能做到吗”的事情？
+• 你还记得现在想做的事情吗？
+• 如果当初的梦想没有实现，你现在能接受吗？</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">03 / ABOUT RESEARCH &amp; WORK</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">• 你最后成为了什么样的研究者？
+• 你还在研究非织造材料、柔性电子这些东西吗？
+• 你有没有找到一个真正让自己兴奋的问题？
+• 你有没有做出真正对别人有价值的东西？
+• 你最后选择了怎样的工作方式？
+• 你有没有为了现实，放弃过自己很珍视的东西？</p>
+        </section>
+        <section class="manifesto-section">
+          <h2 class="manifesto-title">04 / ABOUT LIFE</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">• 你现在还会跑步吗？
+• 你还会认真吃早餐、认真睡觉吗？
+• 你还会躺在草坪上看天空吗？
+• 你还会因为一碗热汤面、一床晒干的被单、猫的咕噜声而感到幸福吗？
+• 你有没有把身体照顾好？
+• 你现在身边还有哪些人？
+• 你有没有遇见真正同频的人？</p>
+        </section>
+        <section class="manifesto-section manifesto-closing">
+          <h2 class="manifesto-title">05 / ABOUT THE PERSON I AM BECOMING</h2><div class="manifesto-rule">────────────</div>
+          <p class="manifesto-copy">这是我最想让你回答的一组：
+
+• 你还记得自己的初心吗？
+• 你有没有成为一个有影响力、能给社会带来价值的人？
+• 你有没有让更多年轻人看到另一种人生可能？
+• 你还愿意持续探索吗？
+• 你还愿意长期学习吗？
+• 你还相信勇气吗？
+• 如果让你重新回到 2026 年，你会对现在的自己说什么？</p>
+        </section>
+      </div>
+    </section>
+    <section class="chapter-view" id="chapter-nine" aria-label="第九章 ARCHIVE" aria-hidden="true">
+      <button class="back-button" type="button" id="back-to-directory-nine">← BACK TO DIRECTORY</button>
+      <div class="archive-wall">
+        <div class="archive-intro">
+          <div>
+            <h2 class="manifesto-title">PHOTO WALL</h2><div class="manifesto-rule">────────────</div>
+            <p class="manifesto-copy">把正在发生的生活留下来。<br>不是为了证明什么，只是因为这些瞬间值得被记住。</p>
+          </div>
+          <div class="archive-count">ARCHIVE 001—010<br>MEMORY IN MOTION</div>
+        </div>
+        <div class="firsts-wall">
+          <div class="archive-intro">
+            <div>
+              <h2 class="manifesto-title">01 / 成长 · 人生节点 · FIRST TIMES</h2><div class="manifesto-rule">────────────</div>
+              <p class="manifesto-copy">十个“第一次”，是我亲手把生活推过边界的证据。<br>悬过针、跑过 17 公里、独自飞去海南、坐 27 小时火车赴一场见面——每个第一次都在说：我不再等被看见，我走向去看。</p>
+            </div>
+            <div class="archive-count">GROWTH 01—10<br>BECOMING, ONE FIRST AT A TIME</div>
+          </div>
+          <div class="photo-grid firsts">
+            <figure class="photo-card"><img src="firsts/01-acupuncture.jpg" alt="第一次自己给自己针灸"><figcaption class="photo-meta"><strong>01 / 第一次给自己针灸</strong><span>ACUPUNCTURE</span></figcaption></figure>
+            <figure class="photo-card"><img src="firsts/02-17km.jpg" alt="第一次跑完 17km"><figcaption class="photo-meta"><strong>02 / 第一次跑完 17km</strong><span>17KM RUN</span></figcaption></figure>
+            <figure class="photo-card photo-duo"><div class="duo"><img src="firsts/03a-hainan.jpg" alt="第一次一个人坐飞机去海南（机场）"><img src="firsts/03b-hainan.jpg" alt="第一次一个人坐飞机去海南（海岛）"></div><figcaption class="photo-meta"><strong>03 / 第一次一个人飞去海南</strong><span>HAINAN · SOLO FLIGHT</span></figcaption></figure>
+            <figure class="photo-card"><img src="firsts/04-haibin.jpg" alt="和海滨老师合影"><figcaption class="photo-meta"><strong>04 / 和海滨老师合影</strong><span>WITH TEACHER HAIBIN</span></figcaption></figure>
+            <figure class="photo-card"><img src="firsts/05-banner.jpg" alt="第一次高考后送老师锦旗"><figcaption class="photo-meta"><strong>05 / 高考后送老师锦旗</strong><span>THANK-YOU BANNER</span></figcaption></figure>
+            <figure class="photo-card"><img src="firsts/06-graduation.jpg" alt="第一次毕业"><figcaption class="photo-meta"><strong>06 / 第一次毕业</strong><span>GRADUATION</span></figcaption></figure>
+            <figure class="photo-card"><img src="firsts/07-flyers.jpg" alt="第一次发完 500 份传单"><figcaption class="photo-meta"><strong>07 / 发完 500 份传单</strong><span>500 FLYERS</span></figcaption></figure>
+            <figure class="photo-card"><img src="firsts/08-train.jpg" alt="第一次坐 27 小时火车到广州参加 LPT 见面会"><figcaption class="photo-meta"><strong>08 / 坐 27h 火车去 LPT 见面会</strong><span>27H TRAIN TO LPT</span></figcaption></figure>
+            <figure class="photo-card"><img src="firsts/09-hike.jpg" alt="第一次和三四十人一起凌晨爬山"><figcaption class="photo-meta"><strong>09 / 凌晨和三四十人爬山</strong><span>DAWN HIKE</span></figcaption></figure>
+            <figure class="photo-card"><img src="firsts/10-university.jpg" alt="第一次上大学，独立生活"><figcaption class="photo-meta"><strong>10 / 第一次上大学独立生活</strong><span>UNIVERSITY</span></figcaption></figure>
+          </div>
+        </div>
+        <div class="campus-wall">
+          <div class="archive-intro">
+            <div>
+              <h2 class="manifesto-title">02 / 大学生活 · CAMPUS LIFE</h2><div class="manifesto-rule">────────────</div>
+              <p class="manifesto-copy">大学生活，是从熟悉的地方走出来以后，第一次真正拥有自己的日常。<br>军训、校园、天空，还有路上偶遇的小猫，都成为这一段生活的注脚。</p>
+            </div>
+            <div class="archive-count">CAMPUS 01—04<br>THE DAYS I AM BECOMING</div>
+          </div>
+          <div class="photo-grid campus">
+            <figure class="photo-card"><img src="campus/01-sky.jpg" alt="大学校园上空的云"><figcaption class="photo-meta"><strong>01 / 校园上空</strong><span>CAMPUS SKY</span></figcaption></figure>
+            <figure class="photo-card"><img src="campus/02-training.jpg" alt="大学军训场地"><figcaption class="photo-meta"><strong>02 / 军训日</strong><span>TRAINING DAYS</span></figcaption></figure>
+            <figure class="photo-card"><img src="campus/03-self-portrait.jpg" alt="军训中的自己"><figcaption class="photo-meta"><strong>03 / 第一次军训</strong><span>FIRST CAMPUS SELF</span></figcaption></figure>
+            <figure class="photo-card"><img src="campus/04-cats.jpg" alt="校园里遇见的猫"><figcaption class="photo-meta"><strong>04 / 校园里的猫</strong><span>CAMPUS CATS</span></figcaption></figure>
+          </div>
+        </div>
+        <div class="travel-wall">
+          <div class="archive-intro">
+            <div>
+              <h2 class="manifesto-title">03 / 旅行 · 远方 · TRAVEL</h2><div class="manifesto-rule">────────────</div>
+              <p class="manifesto-copy">去看山、看海、看城市亮起来，也去看陌生地方里的自己。<br>远方不只是目的地，是每一次出发以后，视野被重新打开的时刻。</p>
+            </div>
+            <div class="archive-count">TRAVEL 01—15<br>PLACES THAT OPENED ME</div>
+          </div>
+          <div class="photo-grid travel">
+            <figure class="photo-card"><img src="travel/01-night-view.jpg" alt="山间夜景"><figcaption class="photo-meta"><strong>01 / 山间夜景</strong><span>NIGHT VIEW</span></figcaption></figure>
+            <figure class="photo-card"><img src="travel/02-mountain.jpg" alt="山谷与草地"><figcaption class="photo-meta"><strong>02 / 走进山谷</strong><span>INTO THE MOUNTAINS</span></figcaption></figure>
+            <figure class="photo-card"><img src="travel/03-stream.jpg" alt="溪水边的旅行时刻"><figcaption class="photo-meta"><strong>03 / 溪水边</strong><span>BY THE STREAM</span></figcaption></figure>
+            <figure class="photo-card"><img src="travel/04-sunset.jpg" alt="夕阳下的城市"><figcaption class="photo-meta"><strong>04 / 夕阳里的城市</strong><span>SUNSET CITY</span></figcaption></figure>
+            <figure class="photo-card"><img src="travel/05-lake.jpg" alt="湖边夜色"><figcaption class="photo-meta"><strong>05 / 湖边夜色</strong><span>LAKESIDE NIGHT</span></figcaption></figure>
+            <figure class="photo-card"><img src="travel/06-city-lake.jpg" alt="城市与湖水"><figcaption class="photo-meta"><strong>06 / 城市与湖水</strong><span>CITY REFLECTIONS</span></figcaption></figure>
+            <figure class="photo-card"><img src="travel/07-sunlight.jpg" alt="树影与阳光"><figcaption class="photo-meta"><strong>07 / 光穿过树叶</strong><span>THROUGH THE TREES</span></figcaption></figure>
+            <figure class="photo-card"><img src="travel/08-old-gate.jpg" alt="旅行中的旧建筑"><figcaption class="photo-meta"><strong>08 / 旧建筑</strong><span>OLD PLACE</span></figcaption></figure>
+            <figure class="photo-card"><img src="travel/09-building.jpg" alt="旅途中的建筑"><figcaption class="photo-meta"><strong>09 / 在路上</strong><span>ON THE WAY</span></figcaption></figure>
+            <figure class="photo-card"><img src="travel/10-temple.jpg" alt="彩绘屋檐与远方"><figcaption class="photo-meta"><strong>10 / 抬头看</strong><span>LOOKING UP</span></figcaption></figure>
+            <figure class="photo-card"><img src="travel/11-trees.jpg" alt="城市里的树木"><figcaption class="photo-meta"><strong>11 / 城市绿荫</strong><span>GREEN CITY</span></figcaption></figure>
+            <figure class="photo-card"><img src="travel/12-palms.jpg" alt="棕榈树与建筑"><figcaption class="photo-meta"><strong>12 / 热带日光</strong><span>TROPICAL LIGHT</span></figcaption></figure>
+            <figure class="photo-card"><img src="travel/13-tower.jpg" alt="夜色中的城市高塔"><figcaption class="photo-meta"><strong>13 / 城市灯火</strong><span>CITY LIGHTS</span></figcaption></figure>
+            <figure class="photo-card"><img src="travel/14-shadow.jpg" alt="路面上的影子"><figcaption class="photo-meta"><strong>14 / 路上的影子</strong><span>SHADOWS ON THE ROAD</span></figcaption></figure>
+            <figure class="photo-card"><img src="travel/15-img4505.jpg" alt="旅途记录"><figcaption class="photo-meta"><strong>15 / 旅途记录</strong><span>TRAVEL NOTE</span></figcaption></figure>
+          </div>
+        </div>
+        <div class="daily-wall">
+          <div class="archive-intro">
+            <div>
+              <h2 class="manifesto-title">04 / 日常碎片 · DAILY FRAGMENTS</h2><div class="manifesto-rule">────────────</div>
+              <p class="manifesto-copy">一些没有被特别命名的时刻：一只袜子、一页画、一次训练、一场雨。<br>生活不是只有重要事件，更多时候，它由这些轻轻闪过的碎片组成。</p>
+            </div>
+            <div class="archive-count">DAILY 01—10<br>SMALL THINGS, STILL HERE</div>
+          </div>
+          <div class="photo-grid daily">
+            <figure class="photo-card"><img src="daily/01-disney.jpg" alt="带有迪士尼贴纸的日常照片"><figcaption class="photo-meta"><strong>01 / 小小的可爱</strong><span>A LITTLE MAGIC</span></figcaption></figure>
+            <figure class="photo-card"><img src="daily/02-reading.jpg" alt="阅读中的日常记录"><figcaption class="photo-meta"><strong>02 / 一页书</strong><span>ONE PAGE</span></figcaption></figure>
+            <figure class="photo-card"><img src="daily/03-watercolor-sun.jpg" alt="水彩画中的太阳"><figcaption class="photo-meta"><strong>03 / 画一个太阳</strong><span>PAINTED SUN</span></figcaption></figure>
+            <figure class="photo-card"><img src="daily/04-watercolor.jpg" alt="水彩画作品"><figcaption class="photo-meta"><strong>04 / 画画的时候</strong><span>MAKING MARKS</span></figcaption></figure>
+            <figure class="photo-card"><img src="daily/05-suitcase.jpg" alt="行李箱旁的手势"><figcaption class="photo-meta"><strong>05 / 出发前</strong><span>BEFORE LEAVING</span></figcaption></figure>
+            <figure class="photo-card"><img src="daily/06-tree-painting.jpg" alt="拿着树木画作的日常时刻"><figcaption class="photo-meta"><strong>06 / 把树带回日常</strong><span>TAKING A TREE HOME</span></figcaption></figure>
+            <figure class="photo-card"><img src="daily/07-clinic.jpg" alt="诊室里的日常记录"><figcaption class="photo-meta"><strong>07 / 工作日切片</strong><span>WORKDAY SLICE</span></figcaption></figure>
+            <figure class="photo-card"><img src="daily/08-dumbbell.jpg" alt="手握哑铃的运动记录"><figcaption class="photo-meta"><strong>08 / 练一下</strong><span>KEEP TRAINING</span></figcaption></figure>
+            <figure class="photo-card"><img src="daily/09-puddle.jpg" alt="雨后水洼里的倒影"><figcaption class="photo-meta"><strong>09 / 雨后的倒影</strong><span>AFTER THE RAIN</span></figcaption></figure>
+            <figure class="photo-card"><img src="daily/10-img4808.jpg" alt="日常生活记录"><figcaption class="photo-meta"><strong>10 / 今日碎片</strong><span>TODAY'S FRAGMENT</span></figcaption></figure>
+          </div>
+        </div>
+        <div class="sports-wall">
+          <div class="archive-intro">
+            <div>
+              <h2 class="manifesto-title">06 / 身体 · 运动 · MOVEMENT</h2><div class="manifesto-rule">────────────</div>
+              <p class="manifesto-copy">身体是我正在学习使用的语言。<br>握住拳套、跑过夜色、爬上墙，也在每一次训练里重新认识自己的力量。</p>
+            </div>
+            <div class="archive-count">MOVEMENT 01—05<br>STRONGER, IN MOTION</div>
+          </div>
+          <div class="photo-grid sports">
+            <figure class="photo-card"><img src="sports/01-boxing-gloves.jpg" alt="戴着拳套的双手"><figcaption class="photo-meta"><strong>01 / 戴上拳套</strong><span>PUT UP YOUR GUARDS</span></figcaption></figure>
+            <figure class="photo-card"><img src="sports/02-night-run.jpg" alt="夜色中的跑步记录"><figcaption class="photo-meta"><strong>02 / 跑进夜色</strong><span>NIGHT RUN</span></figcaption></figure>
+            <figure class="photo-card"><img src="sports/03-climbing.jpg" alt="攀爬运动记录"><figcaption class="photo-meta"><strong>03 / 向上攀爬</strong><span>CLIMB HIGHER</span></figcaption></figure>
+            <figure class="photo-card"><img src="sports/04-track.jpg" alt="操场上的运动记录"><figcaption class="photo-meta"><strong>04 / 在操场上</strong><span>ON THE TRACK</span></figcaption></figure>
+            <figure class="photo-card"><img src="sports/05-goggles.jpg" alt="运动装备的细节"><figcaption class="photo-meta"><strong>05 / 运动的细节</strong><span>GEAR &amp; GRIT</span></figcaption></figure>
+          </div>
+        </div>
+        <div class="cats-wall">
+          <div class="archive-intro">
+            <div>
+              <h2 class="manifesto-title">07 / 猫 · CATS</h2><div class="manifesto-rule">────────────</div>
+              <p class="manifesto-copy">猫把日常变得柔软，也把时间变得很慢。<br>一只爪子、一双眼睛、一次翻身，都是值得被好好记住的小事。</p>
+            </div>
+            <div class="archive-count">CATS 01—05<br>SOFT PAWS, SOFT DAYS</div>
+          </div>
+          <div class="photo-grid cats">
+            <figure class="photo-card"><img src="cats/01-cuddle.jpg" alt="被抱在怀里的猫"><figcaption class="photo-meta"><strong>01 / 抱一会儿</strong><span>CUDDLE TIME</span></figcaption></figure>
+            <figure class="photo-card"><img src="cats/02-upside-down.jpg" alt="仰面躺着的猫"><figcaption class="photo-meta"><strong>02 / 翻过来</strong><span>UPSIDE DOWN</span></figcaption></figure>
+            <figure class="photo-card"><img src="cats/03-paw.jpg" alt="猫咪的爪子特写"><figcaption class="photo-meta"><strong>03 / 小肉垫</strong><span>TINY PAWS</span></figcaption></figure>
+            <figure class="photo-card"><img src="cats/04-under-quilt.jpg" alt="藏在被子里的猫"><figcaption class="photo-meta"><strong>04 / 藏进被子里</strong><span>UNDER THE QUILT</span></figcaption></figure>
+            <figure class="photo-card"><img src="cats/05-duck.jpg" alt="抱着鸭子玩偶的猫"><figcaption class="photo-meta"><strong>05 / 和小鸭子一起</strong><span>WITH A LITTLE DUCK</span></figcaption></figure>
+          </div>
+        </div>
+        <div class="reading-wall">
+          <div class="archive-intro">
+            <div>
+              <h2 class="manifesto-title">09 / 阅读 · 思考 · READING</h2><div class="manifesto-rule">────────────</div>
+              <p class="manifesto-copy">读过的书不会消失，它们会慢慢变成看待世界的方式。<br>正在读的、已经读完的，都是我和自己保持对话的证据。</p>
+            </div>
+            <div class="archive-count">READING 01—02<br>BOOKS THAT STAY</div>
+          </div>
+          <div class="photo-grid reading">
+            <figure class="photo-card"><img src="reading/01-finished.jpg" alt="已读完的书籍记录"><figcaption class="photo-meta"><strong>01 / 已读完</strong><span>BOOKS I FINISHED</span></figcaption></figure>
+            <figure class="photo-card"><img src="reading/02-reading.jpg" alt="正在阅读的书籍记录"><figcaption class="photo-meta"><strong>02 / 正在阅读</strong><span>BOOKS IN PROGRESS</span></figcaption></figure>
+          </div>
+        </div>
+        <div class="keep-wall">
+          <div class="archive-intro">
+            <div>
+              <h2 class="manifesto-title">10 / 我不想忘记的东西 · KEEP</h2><div class="manifesto-rule">────────────</div>
+              <p class="manifesto-copy">有些话很短，却在很长的时间里陪着我。<br>谢谢每一个认真说过“加油”的人，也谢谢那些让我继续往前走的瞬间。</p>
+            </div>
+            <div class="archive-count">KEEP 01—12<br>WORDS I CARRY WITH ME</div>
+          </div>
+          <div class="photo-grid keep">
+            <figure class="photo-card"><img src="keep/01-encouragement.jpg" alt="收到的鼓励消息记录"><figcaption class="photo-meta"><strong>01 / 加油啊</strong><span>KEEP GOING</span></figcaption></figure>
+            <figure class="photo-card"><img src="keep/02-encouragement.jpg" alt="收到的鼓励消息记录"><figcaption class="photo-meta"><strong>02 / 你能行</strong><span>YOU CAN DO IT</span></figcaption></figure>
+            <figure class="photo-card"><img src="keep/03-debris.jpg" alt="收到的鼓励消息记录"><figcaption class="photo-meta"><strong>03 / 继续加油</strong><span>KEEP AT IT</span></figcaption></figure>
+            <figure class="photo-card"><img src="keep/04-goddess.jpg" alt="收到的鼓励消息记录"><figcaption class="photo-meta"><strong>04 / 看好你</strong><span>WE BELIEVE IN YOU</span></figcaption></figure>
+            <figure class="photo-card"><img src="keep/05-encouragement.jpg" alt="收到的鼓励消息记录"><figcaption class="photo-meta"><strong>05 / 好好干</strong><span>DO YOUR BEST</span></figcaption></figure>
+            <figure class="photo-card"><img src="keep/06-debris.jpg" alt="收到的鼓励消息记录"><figcaption class="photo-meta"><strong>06 / 继续加油</strong><span>KEEP AT IT</span></figcaption></figure>
+            <figure class="photo-card"><img src="keep/07-mas.jpg" alt="收到的鼓励消息记录"><figcaption class="photo-meta"><strong>07 / 加油美</strong><span>A KIND WORD</span></figcaption></figure>
+            <figure class="photo-card"><img src="keep/08-lpt.jpg" alt="收到的鼓励消息记录"><figcaption class="photo-meta"><strong>08 / 好好加油</strong><span>CHEERING FOR YOU</span></figcaption></figure>
+            <figure class="photo-card"><img src="keep/09-family.jpg" alt="家人朋友发来的鼓励消息记录"><figcaption class="photo-meta"><strong>09 / 记得加油</strong><span>FROM HOME</span></figcaption></figure>
+            <figure class="photo-card"><img src="keep/10-encouragement.jpg" alt="收到的鼓励消息记录"><figcaption class="photo-meta"><strong>10 / 加油啊</strong><span>KEEP GOING</span></figcaption></figure>
+            <figure class="photo-card"><img src="keep/11-encouragement.jpg" alt="收到的鼓励消息记录"><figcaption class="photo-meta"><strong>11 / 你能行</strong><span>YOU CAN DO IT</span></figcaption></figure>
+            <figure class="photo-card"><img src="keep/12-goddess.jpg" alt="收到的鼓励消息记录"><figcaption class="photo-meta"><strong>12 / 看好你</strong><span>WE BELIEVE IN YOU</span></figcaption></figure>
+          </div>
+        </div>
+        <div class="creative-wall">
+          <div class="archive-intro">
+            <div>
+              <h2 class="manifesto-title">08 / 创造 · 做东西 · MAKE</h2><div class="manifesto-rule">────────────</div>
+              <p class="manifesto-copy">把想法做出来，让它从脑海里进入现实。<br>每一次尝试、调整和完成，都是我与世界发生连接的方式。</p>
+            </div>
+            <div class="archive-count">MAKE 01<br>IDEAS INTO THINGS</div>
+          </div>
+          <figure class="creative-video-card">
+            <video src="creative/01-making.mp4" controls playsinline preload="metadata"></video>
+            <figcaption class="photo-meta"><strong>01 / 做东西的过程</strong><span>ORIGINAL SOUND · ORIGINAL RATIO</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <footer id="site-footer"><span>KEEP MOVING / KEEP BECOMING</span><strong>阿姜—成长迭代</strong></footer>
+  </div>
+  <script>
+    const directory = document.getElementById('directory');
+    const chapterOne = document.getElementById('chapter-one');
+    const chapterOneTrigger = document.getElementById('chapter-one-trigger');
+    const chapterTwo = document.getElementById('chapter-two');
+    const chapterTwoTrigger = document.getElementById('chapter-two-trigger');
+    const chapterThree = document.getElementById('chapter-three');
+    const chapterThreeTrigger = document.getElementById('chapter-three-trigger');
+    const chapterFour = document.getElementById('chapter-four');
+    const chapterFourTrigger = document.getElementById('chapter-four-trigger');
+    const chapterFive = document.getElementById('chapter-five');
+    const chapterFiveTrigger = document.getElementById('chapter-five-trigger');
+    const chapterSeven = document.getElementById('chapter-seven');
+    const chapterSevenTrigger = document.getElementById('chapter-seven-trigger');
+    const chapterEight = document.getElementById('chapter-eight');
+    const chapterEightTrigger = document.getElementById('chapter-eight-trigger');
+    const chapterNine = document.getElementById('chapter-nine');
+    const chapterNineTrigger = document.getElementById('chapter-nine-trigger');
+    const siteFooter = document.getElementById('site-footer');
+    const manifesto = document.getElementById('manifesto');
+    const chapterViews = [chapterOne, chapterTwo, chapterThree, chapterFour, chapterFive, chapterSeven, chapterEight, chapterNine];
+    const chapterTriggers = [chapterOneTrigger, chapterTwoTrigger, chapterThreeTrigger, chapterFourTrigger, chapterFiveTrigger, chapterSevenTrigger, chapterEightTrigger, chapterNineTrigger];
+    let activeTrigger = null;
+
+    function openChapter(chapter, trigger) {
+      chapterViews.forEach(view => {
+        view.classList.remove('is-open');
+        view.setAttribute('aria-hidden', 'true');
+      });
+      directory.style.display = 'none';
+      siteFooter.style.display = 'none';
+      chapter.classList.add('is-open');
+      chapter.setAttribute('aria-hidden', 'false');
+      chapterTriggers.forEach(item => item.setAttribute('aria-expanded', 'false'));
+      trigger.setAttribute('aria-expanded', 'true');
+      activeTrigger = trigger;
+      window.scrollTo({ top: manifesto ? manifesto.offsetTop : 0, behavior: 'smooth' });
+    }
+
+    function closeChapter() {
+      chapterViews.forEach(view => {
+        view.classList.remove('is-open');
+        view.setAttribute('aria-hidden', 'true');
+      });
+      chapterTriggers.forEach(item => item.setAttribute('aria-expanded', 'false'));
+      directory.style.display = '';
+      siteFooter.style.display = '';
+      window.scrollTo({ top: manifesto ? manifesto.offsetTop : 0, behavior: 'smooth' });
+      if (activeTrigger) activeTrigger.focus();
+      activeTrigger = null;
+    }
+
+    chapterOneTrigger.addEventListener('click', () => openChapter(chapterOne, chapterOneTrigger));
+    chapterTwoTrigger.addEventListener('click', () => openChapter(chapterTwo, chapterTwoTrigger));
+    chapterThreeTrigger.addEventListener('click', () => openChapter(chapterThree, chapterThreeTrigger));
+    chapterFourTrigger.addEventListener('click', () => openChapter(chapterFour, chapterFourTrigger));
+    chapterFiveTrigger.addEventListener('click', () => openChapter(chapterFive, chapterFiveTrigger));
+    chapterSevenTrigger.addEventListener('click', () => openChapter(chapterSeven, chapterSevenTrigger));
+    chapterEightTrigger.addEventListener('click', () => openChapter(chapterEight, chapterEightTrigger));
+    chapterNineTrigger.addEventListener('click', () => openChapter(chapterNine, chapterNineTrigger));
+    document.querySelectorAll('.back-button').forEach(button => button.addEventListener('click', closeChapter));
+  </script>
+  <script>
+    (function () {
+      var hero = document.querySelector('.hero');
+      if (!hero) return;
+      var video = hero.querySelector('video');
+      function reveal() { hero.classList.add('is-done'); }
+      // Reveal the text + enter cue once the video has played halfway through,
+      // then keep them on screen for the rest of the (single) playback.
+      function maybeReveal() {
+        if (video.duration && video.currentTime >= video.duration / 2) {
+          reveal();
+          video.removeEventListener('timeupdate', maybeReveal);
+        }
+      }
+      video.addEventListener('timeupdate', maybeReveal);
+      video.addEventListener('ended', reveal); // safety net
+      // Ensure muted autoplay starts; if blocked, reveal on first interaction.
+      var played = video.play();
+      if (played && played.catch) {
+        played.catch(function () {
+          function onInteract() {
+            video.play().catch(function () {});
+            reveal();
+            window.removeEventListener('pointerdown', onInteract);
+            window.removeEventListener('keydown', onInteract);
+          }
+          window.addEventListener('pointerdown', onInteract);
+          window.addEventListener('keydown', onInteract);
+        });
+      }
+      // Enter cue scrolls down to the archive.
+      var manifesto = document.getElementById('manifesto');
+      var cue = hero.querySelector('.enter-cue');
+      if (cue && manifesto) {
+        cue.addEventListener('click', function () {
+          manifesto.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
