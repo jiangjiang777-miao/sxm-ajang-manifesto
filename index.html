@@ -245,8 +245,7 @@
       width:min(100%, calc(100vh * 2.25)); /* fill viewport, keep ratio */
       container-type:inline-size;          /* enables cqi for the overlay */
       overflow:hidden;
-      /* Keep the opening visual intact when Safari cannot decode or fetch the video. */
-      background:#000 url('travel/01-night-view.jpg') center / cover no-repeat;
+      background:#000;
       box-shadow:
         0 40px 100px -20px rgba(0,0,0,.6),
         0 0 0 1px rgba(255,255,255,.04);
@@ -312,7 +311,7 @@
 <body>
   <section class="hero" aria-label="Opening">
     <div class="stage">
-      <video autoplay muted playsinline preload="auto" poster="travel/01-night-view.jpg">
+      <video autoplay muted playsinline preload="auto">
         <source src="cover.mp4" type="video/mp4">
       </video>
       <div class="overlay" role="note">
@@ -1195,8 +1194,8 @@ EXECUTIVE</p>
       if (!hero) return;
       var video = hero.querySelector('video');
       function reveal() { hero.classList.add('is-done'); }
-      // Safari may expose the page while the video remains undecodable. Keep a
-      // useful poster/fallback visible and never block the archive behind it.
+      // Safari may expose the page while the video remains undecodable; never
+      // block the archive behind a failed opening animation.
       video.addEventListener('error', reveal);
       // Reveal the text + enter cue once the video has played halfway through,
       // then keep them on screen for the rest of the (single) playback.
